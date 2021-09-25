@@ -1,23 +1,30 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import * as React from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import UserList from "./components/UserList";
 
-const Navigator = createStackNavigator(
-  {
-    UserList: { screen: UserList }
-  },
-  {
-    initialRouteName: "UserList",
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: "#3a86a8"
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold"
-      }
-    },
-    headerLayoutPreset: "center"
-  }
-);
+const Stack = createNativeStackNavigator();
 
-export default createAppContainer(Navigator);
+const MainStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#3a86a8',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: "bold"
+          },
+          headerTitleAlign: 'center'
+        }}
+      >
+        <Stack.Screen name="UserList" component={UserList} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default MainStack;

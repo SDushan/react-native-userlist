@@ -11,8 +11,6 @@ import allReducers from "./src/reducers";
 const sagaMiddleware = createSagaMiddleware();
 let store = createStore(allReducers, applyMiddleware(sagaMiddleware));
 
-console.disableYellowBox = true;
-
 export default function App() {
   return (
     <Provider store={store}>
